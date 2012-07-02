@@ -1,0 +1,27 @@
+<p>
+  <b>Address Name:</b>
+  <%= address.name %>
+</p>
+
+
+<p>
+  <b>Street:</b>
+  <%= address.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= address.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= address.state %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%= address.zipCode %>
+</p>
+<%= debug address%>
+<%= link_to 'Edit Address', edit_family_address_path(@family,address) %> 

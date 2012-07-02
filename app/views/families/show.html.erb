@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @family.name %>
+</p>
+
+<p>
+  <b>Anniversary:</b>
+  <%= @family.anniversary %>
+</p>
+<% if false %>
+<p>
+  <b>Comments:</b>
+  <%= @family.comments %>
+</p>
+
+<p>
+  <b>Families:</b>
+  <%= @family.families %>
+</p>
+
+
+
+<p>
+  <b>Tags:</b>
+  <%= @family.tags %>
+</p>
+
+<p>
+  <b>Phonenumbers:</b>
+  <%= @family.phoneNumbers %>
+</p>
+
+<p>
+  <b>Date deleted:</b>
+  <%= @family.date_deleted %>
+</p>
+
+<p>
+  <b>Is deleted:</b>
+  <%= @family.is_deleted %>
+</p>
+
+<% end %>
+
+<p>
+  <b>Addresses:</b>
+  <%= render @family.addresses %>
+</p>
+
+<h2>Add an Address:</h2>
+<%= render "addresses/form" %>
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>

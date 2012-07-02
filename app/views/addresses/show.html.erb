@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @address.name %>
+</p>
+
+
+<p>
+  <b>Street:</b>
+  <%= @address.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @address.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @address.state %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%= @address.zipCode %>
+</p>
+
+<p>
+  <b>Date deleted:</b>
+  <%= @address.date_deleted %>
+</p>
+
+<p>
+  <b>Is deleted:</b>
+  <%= @address.is_deleted %>
+</p>
+<%if false%>
+<p>
+  <b>Family:</b>
+  <%= @address.family %>
+</p>
+<%end%>
+
+<%= link_to 'Update', update_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>
