@@ -49,10 +49,10 @@ class AddressesController < ApplicationController
   # PUT /addresses/1.json
   def update
     @address = Address.find(params[:id])
-
+    @family = Family.find(params[:family_id])
     respond_to do |format|
       if @address.update_attributes(params[:address])
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.html { redirect_to family_path(@family), notice: 'Address was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,9 +66,11 @@ class AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
+    
+    @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      format.html { redirect_to addresses_url }
+      format.html { redirect_to family_path(@family) }
       format.json { head :no_content }
     end
   end

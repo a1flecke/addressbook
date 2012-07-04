@@ -1,4 +1,4 @@
-<%= form_for(@address, :url=>{:action=>"update"}) do |f| %>
+<%= form_for(@address, :url=>{:action=>"create"}) do |f| %>
 <% if @address.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>

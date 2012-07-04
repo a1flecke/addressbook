@@ -49,8 +49,8 @@
   <%= render @family.addresses %>
 </p>
 
-<h2>Add an Address:</h2>
-<%= render "addresses/form" %>
-
+<%= link_to 'Add an Address', new_family_address_path(@family) %>
+<br />
+<br />
 <%= link_to 'Edit', edit_family_path(@family) %> |
 <%= link_to 'Back', families_path %>

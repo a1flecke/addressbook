@@ -23,5 +23,4 @@
   <b>Zipcode:</b>
   <%= address.zipCode %>
 </p>
-<%= debug address%>
-<%= link_to 'Edit Address', edit_family_address_path(@family,address) %> 
+<%= link_to 'Edit Address', edit_family_address_path(@family,address) %> <%= link_to "Delete Address", [@family, address], :confirm=> 'Are you sure?', :method=> :delete%>
