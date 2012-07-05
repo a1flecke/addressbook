@@ -11,11 +11,6 @@
 </p>
 <% if false %>
 <p>
-  <b>Comments:</b>
-  <%= @family.comments %>
-</p>
-
-<p>
   <b>Families:</b>
   <%= @family.families %>
 </p>
@@ -25,21 +20,6 @@
 <p>
   <b>Tags:</b>
   <%= @family.tags %>
-</p>
-
-<p>
-  <b>Phonenumbers:</b>
-  <%= @family.phoneNumbers %>
-</p>
-
-<p>
-  <b>Date deleted:</b>
-  <%= @family.date_deleted %>
-</p>
-
-<p>
-  <b>Is deleted:</b>
-  <%= @family.is_deleted %>
 </p>
 
 <% end %>
@@ -52,5 +32,23 @@
 <%= link_to 'Add an Address', new_family_address_path(@family) %>
 <br />
 <br />
+<p>
+  <b>Phone Numbers:</b>
+  <%= render @family.phoneNumbers %>
+</p>
+
+<%= link_to 'Add a Phone Number', new_family_phone_number_path(@family) %>
+<br />
+<br />
+
+<p>
+  <b>Comments:</b>
+  <%= render @family.comments %>
+</p>
+
+<%= link_to 'Add a Comment', new_family_comment_path(@family) %>
+<br />
+<br />
+
 <%= link_to 'Edit', edit_family_path(@family) %> |
 <%= link_to 'Back', families_path %>

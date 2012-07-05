@@ -1,13 +1,13 @@
 Addressbook::Application.routes.draw do
   resources :families do
     resources :addresses
+    resources :phone_numbers
+    resources :comments
   end
 
   resources :people
 
-  resources :comments
-
-  resources :phone_numbers
+  
 
   resources :emails
 

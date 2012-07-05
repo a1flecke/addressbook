@@ -4,4 +4,6 @@ class Family < ActiveRecord::Base
   has_many :addresses
   has_many :tags
   has_many :phoneNumbers
+  
+  validates :name, :presence => true
 end

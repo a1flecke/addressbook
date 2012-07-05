@@ -5,16 +5,10 @@
   <%= @phone_number.value %>
 </p>
 
-<p>
-  <b>Person:</b>
-  <%= @phone_number.person %>
-</p>
-
-<p>
-  <b>Family:</b>
-  <%= @phone_number.family %>
-</p>
-
-
-<%= link_to 'Edit', edit_phone_number_path(@phone_number) %> |
-<%= link_to 'Back', phone_numbers_path %>
+<%if params.has_key?(:family_id) %>
+		<%= link_to 'Edit', edit_phone_number_path(@phone_number) %> |
+		<%= link_to 'Back', phone_numbers_path %>
+<%elsif params.has_key?(:person_id) %>
+		<%= link_to 'Update', edit_family_address_path(@family,@address) %> |
+		<%= link_to 'Back', person_path %>
+<%end %>

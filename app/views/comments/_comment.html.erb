@@ -1,0 +1,6 @@
+<p>
+  <b>Comment:</b>
+  <%= comment.value %>
+</p>
+
+<%= link_to 'Edit Comment', edit_family_comment_path(@family,comment) %> <%= link_to "Delete Comment", [@family, comment], :confirm=> 'Are you sure?', :method=> :delete%>

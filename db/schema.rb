@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624213603) do
+ActiveRecord::Schema.define(:version => 20120705212722) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120624213603) do
     t.integer  "family_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   add_index "phone_numbers", ["family_id"], :name => "index_phone_numbers_on_family_id"

@@ -1,5 +1,9 @@
 <h1>New phone_number</h1>
 
-<%= render 'form' %>
+<%= render 'new_form' %>
 
-<%= link_to 'Back', phone_numbers_path %>
+<% if params.has_key?(:person_id)%>
+	<%= link_to 'Back', family_person_path(params[:person_id]) if params.has_key?(:person_id) %>
+<%elsif params.has_key?(:family_id)%>
+	<%= link_to 'Back', family_path(params[:family_id]) if params.has_key?(:family_id) %>
+<%end %>
