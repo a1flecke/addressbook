@@ -40,16 +40,6 @@
   <%= @person.birthday %>
 </p>
 
-<p>
-  <b>Date deleted:</b>
-  <%= @person.date_deleted %>
-</p>
+<%= link_to 'Update', edit_family_person_path(@family,@person) %> |
+<%= link_to 'Back', person_path %>
 
-<p>
-  <b>Is deleted:</b>
-  <%= @person.is_deleted %>
-</p>
-
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>

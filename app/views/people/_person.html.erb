@@ -1,0 +1,10 @@
+<p>
+  <b>Name:</b>
+  <%= person.firstName %> <%= person.middleName+' ' unless person.middleName.empty?%><%= person.lastName%>
+</p>
+<p>
+	<b>Birthday:</b>
+	<%= person.birthday%>
+</p>
+
+<%= link_to 'Edit Person', edit_family_person_path(@family,person) %> <%= link_to "Delete Person", [@family, person], :confirm=> 'Are you sure?', :method=> :delete%>

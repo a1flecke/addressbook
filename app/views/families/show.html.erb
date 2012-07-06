@@ -50,5 +50,14 @@
 <br />
 <br />
 
+<p>
+  <b>People:</b>
+  <%= render @family.people %>
+</p>
+
+<%= link_to 'Add a Person', new_family_person_path(@family) %>
+<br />
+<br />
+
 <%= link_to 'Edit', edit_family_path(@family) %> |
 <%= link_to 'Back', families_path %>

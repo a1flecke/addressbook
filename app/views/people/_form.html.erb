@@ -1,4 +1,4 @@
-<%= form_for(@person) do |f| %>
+<%= form_for(@person, :url=>{:action=>"update"}) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
@@ -23,10 +23,13 @@
     <%= f.label :lastName %><br />
     <%= f.text_field :lastName %>
   </div>
+  
   <div class="field">
-    <%= f.label :family %><br />
-    <%= f.text_field :family %>
+    <%= f.label :birthday %><br />
+    <%= f.text_field :birthday %>
   </div>
+  
+  <%if false%>
   <div class="field">
     <%= f.label :emails %><br />
     <%= f.text_field :emails %>
@@ -39,18 +42,7 @@
     <%= f.label :tags %><br />
     <%= f.text_field :tags %>
   </div>
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.text_field :birthday %>
-  </div>
-  <div class="field">
-    <%= f.label :date_deleted %><br />
-    <%= f.text_field :date_deleted %>
-  </div>
-  <div class="field">
-    <%= f.label :is_deleted %><br />
-    <%= f.number_field :is_deleted %>
-  </div>
+  <%end%>
   <div class="actions">
     <%= f.submit %>
   </div>

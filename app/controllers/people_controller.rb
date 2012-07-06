@@ -40,27 +40,21 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(params[:person])
-
-    respond_to do |format|
-      if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render json: @person, status: :created, location: @person }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
-    end
+    @family = Family.find(params[:family_id])
+    @person = @family.people.create(params[:person])
+    
+    redirect_to family_path(@family)
   end
 
   # PUT /people/1
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
+    @family = Family.find(params[:family_id])
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to family_path(@family), notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,8 +69,10 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.destroy
 
+    @family = Family.find(params[:family_id])
+
     respond_to do |format|
-      format.html { redirect_to people_url }
+      format.html { redirect_to family_path(@family)}
       format.json { head :no_content }
     end
   end
