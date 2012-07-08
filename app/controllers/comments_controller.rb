@@ -43,7 +43,15 @@ class CommentsController < ApplicationController
     @family = Family.find(params[:family_id])
     @comment = @family.comments.create(params[:comment])
 
-    redirect_to family_path(@family)
+     respond_to do |format|
+      if @comment.save
+        format.html { redirect_to family_path(@family), notice: 'Comment was successfully created.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
     
   # PUT /comments/1

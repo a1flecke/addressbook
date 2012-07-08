@@ -3,10 +3,11 @@ Addressbook::Application.routes.draw do
     resources :addresses
     resources :phone_numbers
     resources :comments
-    resources :people
+    resources :people do
+      resources :emails
+      resources :phone_numbers
+    end
   end
-
-  resources :emails
 
   resources :tags
 

@@ -42,7 +42,15 @@ class AddressesController < ApplicationController
   def create
     @family = Family.find(params[:family_id])
     @address = @family.addresses.create(params[:address])
-    redirect_to family_path(@family)
+    respond_to do |format|
+      if @address.save
+        format.html {redirect_to family_path(@family), notice: 'Address was successfully created.'}
+        format.json{ head :no_content}
+      else
+        format.html { render action: "new"}
+        format.json { render json:@address.errors, status: :unprocessable_entity}
+      end
+    end
   end
 
   # PUT /addresses/1

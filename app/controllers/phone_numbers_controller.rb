@@ -41,9 +41,24 @@ class PhoneNumbersController < ApplicationController
   # POST /phone_numbers.json
   def create
     @family = Family.find(params[:family_id])
-    @phone_number = @family.phoneNumbers.create(params[:phone_number])
     
-    redirect_to family_path(@family)
+    if params.has_key?(:person_id)
+      @person = Person.find(params[:person_id])
+      @phone_number = @person.phoneNumbers.create(params[:phone_number])
+    else
+      @phone_number = @family.phoneNumbers.create(params[:phone_number])
+    end
+    
+    
+    respond_to do |format|
+      if @phone_number.save
+        format.html { redirect_to family_path(@family), notice: 'Phone number was successfully created.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @phone_number.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   # PUT /phone_numbers/1

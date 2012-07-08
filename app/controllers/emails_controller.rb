@@ -40,12 +40,14 @@ class EmailsController < ApplicationController
   # POST /emails
   # POST /emails.json
   def create
-    @email = Email.new(params[:email])
+    @family = Family.find(params[:family_id])
+    @person = Person.find(params[:person_id])
+    @email = @person.emails.create(params[:email])
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to @email, notice: 'Email was successfully created.' }
-        format.json { render json: @email, status: :created, location: @email }
+        format.html { redirect_to family_path(@family), notice: 'Email was successfully updated.' }
+        format.json { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @email.errors, status: :unprocessable_entity }
@@ -57,10 +59,11 @@ class EmailsController < ApplicationController
   # PUT /emails/1.json
   def update
     @email = Email.find(params[:id])
+    @family = Family.find(params[:family_id])
 
     respond_to do |format|
       if @email.update_attributes(params[:email])
-        format.html { redirect_to @email, notice: 'Email was successfully updated.' }
+        format.html { redirect_to family_path(@family), notice: 'Email was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,9 +77,11 @@ class EmailsController < ApplicationController
   def destroy
     @email = Email.find(params[:id])
     @email.destroy
+    
+    @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      format.html { redirect_to emails_url }
+      format.html { redirect_to family_path(@family) }
       format.json { head :no_content }
     end
   end

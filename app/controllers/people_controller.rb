@@ -43,7 +43,15 @@ class PeopleController < ApplicationController
     @family = Family.find(params[:family_id])
     @person = @family.people.create(params[:person])
     
-    redirect_to family_path(@family)
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to family_path(@family), notice: 'Person was successfully created.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /people/1

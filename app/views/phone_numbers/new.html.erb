@@ -3,7 +3,7 @@
 <%= render 'new_form' %>
 
 <% if params.has_key?(:person_id)%>
-	<%= link_to 'Back', family_person_path(params[:person_id]) if params.has_key?(:person_id) %>
+	<%= link_to 'Back', family_person_path(params[:family_id],params[:person_id]) if params.has_key?(:person_id) %>
 <%elsif params.has_key?(:family_id)%>
 	<%= link_to 'Back', family_path(params[:family_id]) if params.has_key?(:family_id) %>
-<%end %>
+<%end%>

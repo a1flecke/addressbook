@@ -1,4 +1,4 @@
-<%= form_for(@email) do |f| %>
+<%= form_for(@email, :url=>{:action=>"update"}) do |f| %>
   <% if @email.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@email.errors.count, "error") %> prohibited this email from being saved:</h2>
@@ -15,10 +15,7 @@
     <%= f.label :value %><br />
     <%= f.text_field :value %>
   </div>
-  <div class="field">
-    <%= f.label :person %><br />
-    <%= f.text_field :person %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
