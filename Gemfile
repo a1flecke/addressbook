@@ -1,23 +1,63 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
+#UI
+#Device/Feature Detection
+gem 'modernizr-rails'
+gem 'mobile-fu'
 
+#Form/Validation
+gem 'simple_form'
+gem 'country_select'
+gem 'validates_timeliness'
+
+#Decorators for models
+gem 'draper', '0.18.0'
+
+#Pagination for models
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
+#ics support
+gem 'icalendar'
+
+group :development, :test do
+  gem 'debugger'
+  gem 'rspec-rails', '>= 2.9.0'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'brakeman'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'spork-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent'
+  gem 'simplecov', :require => false
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'compass-rails'
+  gem 'font-awesome-sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 gem 'jquery-rails'
