@@ -1,0 +1,27 @@
+<p>
+  <b>Name:</b>
+  <%= person.firstName %> <%= person.middleName+' ' unless person.middleName.empty?%><%= person.lastName%>
+</p>
+<p>
+	<b>Birthday:</b>
+	<%= person.birthday%>
+</p>
+<p>
+	<b>Nick Name:</b>
+	<%= person.nickname%>
+</p>
+
+<p>
+  <b>Phone number (person):</b>
+  <%= render person.phoneNumbers %>
+  <%= link_to 'Add a Phone Number', new_family_person_phone_number_path(@family,person) %>
+</p>
+
+
+<p>
+  <b>Email:</b>
+  <%= render person.emails %>
+  <%= link_to 'Add an Email', new_family_person_email_path(@family,person) %>
+</p>
+
+<%= link_to 'Edit Person', edit_family_person_path(@family,person) %> <%= link_to "Delete Person", [@family, person], :confirm=> 'Are you sure?', :method=> :delete%>

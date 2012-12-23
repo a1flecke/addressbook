@@ -60,6 +60,22 @@ group :assets do
   gem 'uglifier'
 end
 
+group :development, :test do
+  gem 'capybara'
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'rspec-rails', "~> 2.0"
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'spork'
+  gem "launchy"
+end
+
+gem 'win32console'
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

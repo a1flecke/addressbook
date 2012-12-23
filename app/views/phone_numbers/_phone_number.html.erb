@@ -1,0 +1,17 @@
+<p>
+  <b>Phone Number</b>
+  <%= phone_number.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= phone_number.value %>
+</p>
+
+<%if phone_number.person_id.nil?%>
+<%= link_to 'Edit Phone Number', edit_family_phone_number_path(@family,phone_number) %> <%= link_to "Delete Phone Number", [@family, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
+<%else params.has_key?(:id)%>
+<% person = Person.find(phone_number.person_id)%>
+<%= link_to 'Edit Phone Number', edit_family_person_phone_number_path(@family,person,phone_number) %> <%= link_to "Delete Phone Number", [@family, person, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
+<%end%>
+

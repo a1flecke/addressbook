@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
+<<<<<<< HEAD
     bourne (1.1.2)
       mocha (= 0.10.5)
     brakeman (1.8.3)
@@ -46,12 +47,17 @@ GEM
       terminal-table (~> 1.4)
     builder (3.0.4)
     capybara (1.1.4)
+=======
+    builder (3.0.0)
+    capybara (1.1.3)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+<<<<<<< HEAD
     capybara-screenshot (0.3.2)
       capybara (>= 1.0, < 3)
     capybara-webkit (0.13.0)
@@ -60,6 +66,10 @@ GEM
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.6)
+=======
+    childprocess (0.3.6)
+      ffi (~> 1.0, >= 1.0.6)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -67,6 +77,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
+<<<<<<< HEAD
     coffee-script-source (1.4.0)
     columnize (0.3.6)
     compass (0.12.2)
@@ -76,6 +87,9 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     country_select (1.0.1)
+=======
+    coffee-script-source (1.3.3)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     cucumber (1.2.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -86,6 +100,7 @@ GEM
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
     database_cleaner (0.9.1)
+<<<<<<< HEAD
     debugger (1.2.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -97,9 +112,17 @@ GEM
     draper (0.18.0)
       actionpack (~> 3.2)
       activesupport (~> 3.2)
+=======
+    diff-lcs (1.1.3)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     erubis (2.7.0)
+    eventmachine (1.0.0-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.1.0)
@@ -150,11 +173,41 @@ GEM
       addressable
       websocket
     listen (0.6.0)
+=======
+    ffi (1.1.5-x86-mingw32)
+    gherkin (2.11.5-x86-mingw32)
+      json (>= 1.4.6)
+    guard (1.5.4)
+      listen (>= 0.4.2)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-livereload (1.1.0)
+      em-websocket (>= 0.2.0)
+      guard (>= 1.5.0)
+      multi_json (~> 1.0)
+    guard-rspec (2.1.1)
+      guard (>= 1.1)
+      rspec (~> 2.11)
+    hike (1.2.1)
+    i18n (0.6.0)
+    journey (1.0.3)
+    jquery-rails (2.0.2)
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+    json (1.7.3)
+    launchy (2.1.2)
+      addressable (~> 2.3)
+    libwebsocket (0.1.5)
+      addressable
+    listen (0.5.3)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     lumberjack (1.0.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+<<<<<<< HEAD
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.19)
@@ -172,6 +225,13 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
+=======
+    method_source (0.8.1)
+    mime-types (1.18)
+    multi_json (1.3.6)
+    nokogiri (1.5.5-x86-mingw32)
+    polyglot (0.3.3)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     pry (0.9.10-x86-mingw32)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -205,6 +265,7 @@ GEM
     rb-fsevent (0.9.2)
     rdoc (3.12)
       json (~> 1.4)
+<<<<<<< HEAD
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -227,15 +288,37 @@ GEM
       sexp_processor (~> 3.0)
     rubyzip (0.9.9)
     sass (3.2.4)
+=======
+    rspec (2.11.0)
+      rspec-core (~> 2.11.0)
+      rspec-expectations (~> 2.11.0)
+      rspec-mocks (~> 2.11.0)
+    rspec-core (2.11.1)
+    rspec-expectations (2.11.3)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.11.3)
+    rspec-rails (2.11.4)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec (~> 2.11.0)
+    rubyzip (0.9.9)
+    sass (3.1.19)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+<<<<<<< HEAD
     selenium-webdriver (2.27.2)
+=======
+    selenium-webdriver (2.26.0)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+<<<<<<< HEAD
     sexp_processor (3.2.0)
     shoulda-matchers (1.4.2)
       activesupport (>= 3.0.0)
@@ -253,6 +336,11 @@ GEM
       rails (>= 3.0.0, < 3.3.0)
       spork (>= 1.0rc0)
     sprockets (2.2.2)
+=======
+    slop (3.3.3)
+    spork (0.9.2)
+    sprockets (2.1.3)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -269,10 +357,14 @@ GEM
     tzinfo (0.3.35)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
+<<<<<<< HEAD
       multi_json (~> 1.0, >= 1.0.2)
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     websocket (1.0.6)
+=======
+      multi_json (>= 1.0.2)
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb
     win32console (1.3.2-x86-mingw32)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -282,6 +374,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+<<<<<<< HEAD
   brakeman
   capybara
   capybara-screenshot
@@ -315,3 +408,21 @@ DEPENDENCIES
   sqlite3
   uglifier
   validates_timeliness
+=======
+  capybara
+  coffee-rails (~> 3.2.1)
+  cucumber
+  cucumber-rails
+  database_cleaner
+  guard-livereload
+  guard-rspec
+  jquery-rails
+  launchy
+  rails (= 3.2.1)
+  rspec-rails (~> 2.0)
+  sass-rails (~> 3.2.3)
+  spork
+  sqlite3
+  uglifier (>= 1.0.3)
+  win32console
+>>>>>>> eab9940342f20e796a0ee398ddd7a9d1471e4bfb

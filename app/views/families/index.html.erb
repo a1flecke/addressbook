@@ -1,0 +1,43 @@
+<h1>Listing families</h1>
+
+<table>
+  <tr>
+  	<th>Name</th>
+    <th>Anniversary</th>
+<% if false %>
+   <th>Comments</th>
+    <th>Families</th>
+    <th>Addresses</th>
+    <th>Tags</th>
+    <th>Phonenumbers</th>
+    <th>Date deleted</th>
+    <th>Is deleted</th>
+<% end %>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @families.each do |family| %>
+  <tr>
+  	<td><%= family.name %></td>
+  	<td><%= family.anniversary %></td>
+<%if false%>
+    <td><%= family.comments %></td>
+    <td><%= family.families %></td>
+    <td><%= family.addresses %></td>
+    <td><%= family.tags %></td>
+    <td><%= family.phoneNumbers %></td>
+    <td><%= family.date_deleted %></td>
+    <td><%= family.is_deleted %></td>
+<% end %>
+    <td><%= link_to 'Show', family %></td>
+    <td><%= link_to 'Edit', edit_family_path(family) %></td>
+    <td><%= link_to 'Destroy', family, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Family', new_family_path %>

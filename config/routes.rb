@@ -1,4 +1,16 @@
 Addressbook::Application.routes.draw do
+  resources :families do
+    resources :addresses
+    resources :phone_numbers
+    resources :comments
+    resources :people do
+      resources :emails
+      resources :phone_numbers
+    end
+  end
+
+  resources :tags
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

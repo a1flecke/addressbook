@@ -1,0 +1,7 @@
+
+<p>
+  <b>Email:</b>
+  <%= email.value %>
+</p>
+<% person = Person.find(email.person_id)%>
+<%= link_to 'Edit Email', edit_family_person_email_path(@family, person, email) %> <%= link_to "Delete Email", [@family, person,email], :confirm=> 'Are you sure?', :method=> :delete%>
