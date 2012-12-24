@@ -42,13 +42,11 @@ group :test do
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'spork-rails'
-  gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rb-fsevent'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
-  # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
+  gem 'guard-rspec'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -59,22 +57,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
-group :development, :test do
-  gem 'capybara'
-  # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
-  gem 'cucumber'
-  gem 'cucumber-rails'
-  gem 'rspec-rails', "~> 2.0"
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'spork'
-  gem "launchy"
-end
-
-gem 'win32console'
 
 gem 'jquery-rails'
 
