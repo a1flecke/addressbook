@@ -10,7 +10,6 @@ describe 'addressbook homepage' do
 	end
 
 	it 'should welcome you' do
-		page.should have_content?('Welcome to Fleck Address Book')
+		page.should have_content('Welcome to Fleck\'s Address Book')
 	end
-
 end

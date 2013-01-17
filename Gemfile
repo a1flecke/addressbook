@@ -27,12 +27,12 @@ gem 'kaminari-bootstrap'
 #ics support
 gem 'icalendar'
 
+gem 'rb-inotify'
+
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails', '>= 2.9.0'
   gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'database_cleaner'
   gem 'brakeman'
 end
 
@@ -41,9 +41,13 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
+  gem 'guard-rspec'
+  gem 'launchy'
   gem 'spork-rails'
+  gem 'faker'
   gem 'guard-spork'
   gem 'rb-fsevent'
+  gem 'database_cleaner'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'guard-rspec'
