@@ -18,11 +18,13 @@ gem 'country_select'
 gem 'validates_timeliness'
 
 #Decorators for models
-gem 'draper', '0.18.0'
+gem 'draper'
 
 #Pagination for models
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+gem 'tabulous'
 
 #ics support
 gem 'icalendar'
