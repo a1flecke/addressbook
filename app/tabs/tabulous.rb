@@ -33,15 +33,6 @@ Tabulous.setup do
     #   enabled_when  { true }
     #   active_when   { in_action('any').of_controller('emails') }
     # end
-
-    # people_tab do
-    #   text          { 'People' }
-    #   link_path     { family_people_path }
-    #   visible_when  { true }
-    #   enabled_when  { true }
-    #   active_when   { in_action('any').of_controller('people') }
-    # end
-
     families_tab do
       text          { 'Families' }
       link_path     { root_path }
@@ -49,6 +40,15 @@ Tabulous.setup do
       enabled_when  { true }
       active_when   { in_action('any').of_controller('families') }
     end
+
+    people_tab do
+      text          { 'People' }
+      link_path     { people_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('people') }
+    end
+
 
     # tags_tab do
     #   text          { 'Tags' }
@@ -90,8 +90,8 @@ Tabulous.setup do
   # This scaffolding should be turned off and replaced by your own custom
   # CSS before using tabulous in production.
   use_css_scaffolding do
-    background_color '#ccc'
-    text_color '#444'
+    background_color '#FFFF'
+    text_color '#FF'
     active_tab_color '#fff'
     hover_tab_color '#ddd'
     inactive_tab_color '#aaa'
