@@ -1,6 +1,12 @@
 <h1 class="families title">Welcome to Fleck's Address Book</h1>
 <%= tabs %>
-<%= subtabs %>
+<div class="families">
+  <div class="headings"><span>NAME</span><span>PHONE</span><span>EMAIL</span><span>MEMBERS</span><span><%= link_to 'New Family', new_family_path%></span></div>
+  <% @families.each do |family| %>
+    <%= render family %>
+  <%end %>
+</div>
+
 <!---
 <table>
   <tr>
