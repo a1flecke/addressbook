@@ -1,0 +1,5 @@
+<% if family.comments.empty? %>
+	<%= link_to "Add Comment", new_family_comment_path(family), :class => 'btn btn-mini btn-info' %>
+<% else %>
+	<%= link_to "Comments", family_comments_path(family) %>
+<% end %>

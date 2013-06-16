@@ -1,58 +1,16 @@
-<%= form_for(@family) do |f| %>
-  <% if @family.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:</h2>
-
-      <ul>
-      <% @family.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :anniversary %><br />
-    <%= f.text_field :anniversary %>
-  </div>
-
-<% if false %>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_field :comments %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :families %><br />
-    <%= f.text_field :families %>
-  </div>
-  <div class="field">
-    <%= f.label :addresses %><br />
-    <%= f.text_field :addresses %>
-  </div>
-  <div class="field">
-    <%= f.label :tags %><br />
-    <%= f.text_field :tags %>
-  </div>
-  <div class="field">
-    <%= f.label :phoneNumbers %><br />
-    <%= f.text_field :phoneNumbers %>
-  </div>
-  <div class="field">
-    <%= f.label :date_deleted %><br />
-    <%= f.text_field :date_deleted %>
-  </div>
-  <div class="field">
-    <%= f.label :is_deleted %><br />
-    <%= f.number_field :is_deleted %>
-  </div>
-<% end %>
-  <div class="actions">
-    <%= f.submit %>
+<%= simple_form_for @family, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :comments_id %>
+  <%= f.input :families_id %>
+  <%= f.input :addresses_id %>
+  <%= f.input :tags_id %>
+  <%= f.input :anniversary %>
+  <%= f.input :phoneNumbers_id %>
+  <%= f.input :date_deleted %>
+  <%= f.input :is_deleted %>
+  <%= f.input :name %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                families_path, :class => 'btn' %>
   </div>
 <% end %>
