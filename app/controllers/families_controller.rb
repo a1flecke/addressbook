@@ -2,7 +2,7 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = Family.all
+    @families = FamilyDecorator.decorate(Family.all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class FamiliesController < ApplicationController
   # GET /families/1
   # GET /families/1.json
   def show
-    @family = Family.find(params[:id])
+    @family = get_family(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class FamiliesController < ApplicationController
   # GET /families/new
   # GET /families/new.json
   def new
-    @family = Family.new
+    @family = FamilyDecorator.decorate(Family.new)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,14 +34,14 @@ class FamiliesController < ApplicationController
 
   # GET /families/1/edit
   def edit
-    @family = Family.find(params[:id])
+    @family = get_family(params[:id])
   end
 
   # POST /families
   # POST /families.json
   def create
     puts :family
-    @family = Family.new(params[:family])
+    @family = FamilyDecorator.decorate(Family.new(params[:family]))
 
     respond_to do |format|
       if @family.save
@@ -57,7 +57,7 @@ class FamiliesController < ApplicationController
   # PUT /families/1
   # PUT /families/1.json
   def update
-    @family = Family.find(params[:id])
+    @family = get_family(params[:id])
 
     respond_to do |format|
       if @family.update_attributes(params[:family])

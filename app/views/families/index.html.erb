@@ -20,10 +20,11 @@
   <tbody>
     <% @families.each do |family|%> 
       <tr>
-        <td><%= render "comments", family: family %></td>
-        <td><%= render "addresses", family: family %></td>
+        <% simple_form_for family do |form|%>
+        <td><%= render "comments/inline_comments", {family: family, form: form} %></td>
+        <td><%= render "addresses/inline_addresses", {family: family, form: form} %></td>
         <td><%= family.tags_id %></td>
-        <td class="date"><%= family.anniversary %></td> datepicker is still not working
+        <td ><%= form.input family.anniversary, :as => :date_picker %></td>
         <td><%= family.phoneNumbers_id %></td>
         <td><%= family.date_deleted %></td>
         <td><%= family.is_deleted %></td>
@@ -38,6 +39,7 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
