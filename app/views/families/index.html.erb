@@ -20,28 +20,28 @@
   <tbody>
     <% @families.each do |family|%> 
       <tr>
-        <% simple_form_for family do |form|%>
-        <td><%= render "comments/inline_comments", {family: family, form: form} %></td>
-        <td><%= render "addresses/inline_addresses", {family: family, form: form} %></td>
-        <td><%= family.tags_id %></td>
-        <td ><%= form.input family.anniversary, :as => :date_picker %></td>
-        <td><%= family.phoneNumbers_id %></td>
-        <td><%= family.date_deleted %></td>
-        <td><%= family.is_deleted %></td>
-        <td><%= family.name %></td>
-        <td><%=l family.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_family_path(family), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      family_path(family),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-        <% end %>
-      </tr>
-    <% end %>
+          <%= simple_form_for(family, :html => {:class => 'form-horizontal' }) do |form|%>
+          <td><%= render "comments/inline_comments", {family: family, form: form} %></td>
+          <td><%= render "addresses/inline_addresses", {family: family, form: form} %></td>
+          <td><%= family.tags_id %></td>
+          <td ><%= form.input :anniversary, :as => :date_picker %></td>
+          <td><%= family.phoneNumbers_id %></td>
+          <td><%= family.date_deleted %></td>
+          <td><%= family.is_deleted %></td>
+          <td><%= family.name %></td>
+          <td><%=l family.created_at %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_family_path(family), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        family_path(family),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          </td>
+          <% end %>
+        </tr>
+      <% end %>
   </tbody>
 </table>
 

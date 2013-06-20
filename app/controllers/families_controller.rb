@@ -2,7 +2,7 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = FamilyDecorator.decorate(Family.all)
+    @families = FamilyDecorator.decorate_collection(Family.all)
 
     respond_to do |format|
       format.html # index.html.erb

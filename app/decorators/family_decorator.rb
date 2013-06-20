@@ -2,6 +2,7 @@ require 'date'
 
 class FamilyDecorator < Draper::Decorator
   delegate_all
+  decorates :family
 
 	def anniversary
 		if anniversary?
