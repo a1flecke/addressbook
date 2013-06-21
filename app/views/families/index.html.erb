@@ -24,7 +24,7 @@
           <td><%= render "comments/inline_comments", {family: family, form: form} %></td>
           <td><%= render "addresses/inline_addresses", {family: family, form: form} %></td>
           <td><%= family.tags_id %></td>
-          <td ><%= form.input :anniversary, :as => :date_picker %></td>
+          <td ><%= form.input :anniversary, as: :date_picker, label: false %></td>
           <td><%= family.phoneNumbers_id %></td>
           <td><%= family.date_deleted %></td>
           <td><%= family.is_deleted %></td>
