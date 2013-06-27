@@ -29,7 +29,7 @@ gem 'tabulous'
 #ics support
 gem 'icalendar'
 
-gem 'rb-inotify'
+#gem 'rb-inotify'
 
 group :development, :test do
   gem 'debugger'
@@ -41,7 +41,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'capybara-webkit'
+  #gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'guard-rspec'
   gem 'launchy'
@@ -54,6 +54,10 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'guard-rspec'
 end
+
+  gem "bootstrap-sass"
+  gem "bootstrap-helpers"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -62,9 +66,8 @@ group :assets do
   gem 'font-awesome-sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem "twitter-bootstrap-rails"
+  #gem "therubyracer"
+  #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
   gem 'jquery-ui-rails'
 end
 
