@@ -10,8 +10,6 @@
       <th><%= model_class.human_attribute_name(:tags_id) %></th>
       <th><%= model_class.human_attribute_name(:anniversary) %></th>
       <th><%= model_class.human_attribute_name(:phoneNumbers_id) %></th>
-      <th><%= model_class.human_attribute_name(:date_deleted) %></th>
-      <th><%= model_class.human_attribute_name(:is_deleted) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -23,13 +21,11 @@
           <%= simple_form_for(family, :html => {:class => 'form-horizontal' }) do |form|%>
           <td><%= render "comments/inline_comments", {family: family, form: form} %></td>
           <td><%= render "addresses/inline_addresses", {family: family, form: form} %></td>
-          <td><%= family.tags_id %></td>
-          <td ><%= form.input :anniversary, as: :date_picker, label: false %></td>
-          <td><%= family.phoneNumbers_id %></td>
-          <td><%= family.date_deleted %></td>
-          <td><%= family.is_deleted %></td>
+          <td><%= render "tags/inline_tags", {family: family, form: form} %></td>
+          <td ><%= best_in_place family, :anniversary, type: :date, nil: "ADD" %></td>
+          <td><%= render "phone_numbers/inline_phone_numbers", {family: family, form: form} %></td>
           <td><%= family.name %></td>
-          <td><%=l family.created_at %></td>
+          <td><%= family.created_at %></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_family_path(family), :class => 'btn btn-mini' %>

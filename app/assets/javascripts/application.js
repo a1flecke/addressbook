@@ -13,6 +13,13 @@
 //= require jquery
 //= require jquery.ui.datepicker
 //= require jquery_ujs
+//= require best_in_place
 //= require twitter/bootstrap
 //= require_tree .
-$("input.date_picker").datepicker();
+
+
+$("input.date_picker").datepicker({
+   onSelect: function(dateText, inst) {
+    	             
+    }
+});
