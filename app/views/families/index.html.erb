@@ -15,7 +15,7 @@
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="families">
     <% @families.each do |family|%> 
       <tr>
           <%= simple_form_for(family, :html => {:class => 'form-horizontal' }) do |form|%>
@@ -43,4 +43,4 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_family_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary new-family', remote: true, id: "new-family"%>
