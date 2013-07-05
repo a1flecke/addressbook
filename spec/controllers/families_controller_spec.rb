@@ -150,7 +150,7 @@ describe FamiliesController do
 
 		it 'should throw an RecordNotFound if the family is not found (by id)' do
 			expect{
-				put :update, id: @family.id+1
+				patch :update, id: @family.id+1
 			}.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
@@ -160,17 +160,17 @@ describe FamiliesController do
 			end
 
 			it 'should redirect to the edit family form if there are form errors (HTML)' do
-				response = put :update, id: @family.id, family: @invalid_attributes
+				response = patch :update, id: @family.id, family: @invalid_attributes
 				expect(response).to render_template(:edit)
 			end
 
 			it 'should respond with errors in JSON if there are form errors (JSON)' do
-				response_json = put :update, id: @family.id, family: @invalid_attributes, format: :json
+				response_json = patch :update, id: @family.id, family: @invalid_attributes, format: :json
 				response.body.should include "can't be blank"
 			end
 
 			it 'should not update the family attributes is invalid' do
-				put :update, id: @family.id, family: @invalid_attributes
+				patch :update, id: @family.id, family: @invalid_attributes
 				@family.reload
 				@family.name.should_not be_empty
 			end
@@ -183,17 +183,17 @@ describe FamiliesController do
 			end
 
 			it 'should redirect to the family page if the family update was successful (HTML)' do
-				response = put :update, id: @family.id, family: @valid_attributes
+				response = patch :update, id: @family.id, family: @valid_attributes
 				expect(response).to redirect_to(family_path(@family))
 			end
 
 			it 'should respond with JSON if the family update was ok (JSON)' do
-				response = put :update, id: @family.id, family: @valid_attributes, format: :json
+				response = patch :update, id: @family.id, family: @valid_attributes, format: :json
 				response.status == HTTP_STATUS_CODES[:not_found]
 			end
 			
 			it 'should update the family' do
-				put :update, id: @family.id, family: @valid_attributes
+				patch :update, id: @family.id, family: @valid_attributes
 				@family.reload
 				@family.name.should == @valid_attributes[:name]
 			end

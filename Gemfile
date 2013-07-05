@@ -1,19 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '>=4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
 #UI
 #Device/Feature Detection
 gem 'modernizr-rails'
 gem 'mobile-fu'
 
 #Form/Validation
-gem 'simple_form'
+gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select'
 gem 'validates_timeliness'
 
@@ -45,9 +46,7 @@ group :test do
   gem 'capybara-screenshot'
   gem 'guard-rspec'
   gem 'launchy'
-  gem 'spork-rails'
   gem 'faker'
-  gem 'guard-spork'
   gem 'rb-fsevent'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
@@ -55,24 +54,20 @@ group :test do
   gem 'guard-rspec'
 end
 
-  gem "bootstrap-sass"
-  gem "bootstrap-helpers"
+gem "bootstrap-sass"
+gem "bootstrap-helpers"
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'compass-rails'
-  gem 'font-awesome-sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  #gem "therubyracer"
-  #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem 'jquery-ui-rails'
-end
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'font-awesome-sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+#gem "therubyracer"
+#gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'jquery-ui-rails'
 
 gem 'jquery-rails'
-gem 'best_in_place'
+gem 'best_in_place', github: "bernat/best_in_place"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

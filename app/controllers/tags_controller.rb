@@ -59,7 +59,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
 
     respond_to do |format|
-      if @tag.update_attributes(params[:tag])
+      if @tag.update(params[:tag].permit(:family))
         format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
         format.json { head :no_content }
       else

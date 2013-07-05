@@ -163,13 +163,13 @@ describe CommentsController do
 
 		it 'should throw an RecordNotFound if the comment is not found (by id)' do
 			expect{
-				put :update, family_id: @family.id, id: @comment.id+1
+				patch :update, family_id: @family.id, id: @comment.id+1
 			}.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
 		it 'should throw an RecordNotFound if the family was not found' do
 			expect{
-				put :update, family_id: @family.id+1, id: @comment.id
+				patch :update, family_id: @family.id+1, id: @comment.id
 			}.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
@@ -179,17 +179,17 @@ describe CommentsController do
 			end
 
 			it 'should redirect to the edit comment form if there are form errors (HTML)' do
-				response = put :update, family_id: @family, id: @comment.id,  comment: @invalid_attributes
+				response = patch :update, family_id: @family, id: @comment.id,  comment: @invalid_attributes
 				expect(response).to render_template(:edit)
 			end
 
 			it 'should respond with errors in JSON if there are form errors (JSON)' do
-				response_json = put :update, family_id: @family.id, id: @comment.id, comment: @invalid_attributes, format: :json
+				response_json = patch :update, family_id: @family.id, id: @comment.id, comment: @invalid_attributes, format: :json
 				response.body.should include "can't be blank"
 			end
 
 			it 'should not update the comment attributes is invalid' do
-				put :update, family_id: @family.id, id: @comment.id, comment: @invalid_attributes
+				patch :update, family_id: @family.id, id: @comment.id, comment: @invalid_attributes
 				@comment.reload
 				@comment.value.should_not be_empty
 			end
@@ -202,17 +202,17 @@ describe CommentsController do
 			end
 
 			it 'should redirect to the family page if the comment update was successful (HTML)' do
-				response = put :update, family_id: @family.id, id: @comment.id, comment: @valid_attributes
+				response = patch :update, family_id: @family.id, id: @comment.id, comment: @valid_attributes
 				expect(response).to redirect_to(family_path(@family))
 			end
 
 			it 'should respond with JSON if the comment update was ok (JSON)' do
-				response = put :update, family_id: @family.id, id: @comment, comment: @valid_attributes, format: :json
+				response = patch :update, family_id: @family.id, id: @comment, comment: @valid_attributes, format: :json
 				response.status == HTTP_STATUS_CODES[:not_found]
 			end
 			
 			it 'should update the comment' do
-				put :update, family_id: @family.id, id: @comment.id, comment: @valid_attributes
+				patch :update, family_id: @family.id, id: @comment.id, comment: @valid_attributes
 				@comment.reload
 				@comment.value.should == @valid_attributes[:value]
 			end
@@ -227,20 +227,20 @@ describe CommentsController do
 
 		it 'should throw an RecordNotFound if the comment is not found (by id)' do
 			expect{
-				post :destroy, family_id: @family.id, id: @comment.id+1
+				delete family_id: @family.id, id: @comment.id+1
 			}.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
 		it 'should throw an RecordNotFound if the family was not found' do
 			expect{
-				post :destroy, family_id: @family.id+1, id: @comment.id
+				delete family_id: @family.id+1, id: @comment.id
 			}.to raise_error(ActiveRecord::RecordNotFound)
 		end
 
 		it 'should still delete the comment if the family was not found' do
 			expect{
 				begin
-					post :destroy, family_id: @family.id+1, id: @comment.id
+					delete family_id: @family.id+1, id: @comment.id
 				rescue ActiveRecord::RecordNotFound
 				end
 			}.to change(Comment,:count)
@@ -248,17 +248,17 @@ describe CommentsController do
 
 		it 'should delete if everything is rosy' do
 			expect{
-				post :destroy, family_id: @family.id, id: @comment.id
+				delete family_id: @family.id, id: @comment.id
 			}.to change(Comment,:count)
 		end
 
 		it 'should redirect to the family page if the comment update was successful (HTML)' do
-			response = post :destroy, family_id: @family.id, id: @comment.id
+			response = delete family_id: @family.id, id: @comment.id
 			expect(response).to redirect_to(family_path(@family))
 		end
 
 		it 'should respond with JSON if the family was found' do
-			response_json = post :destroy, family_id: @family.id, id: @comment.id, format: :json
+			response_json = delete family_id: @family.id, id: @comment.id, format: :json
 			response_json.status == HTTP_STATUS_CODES[:not_found]
 		end
 	end

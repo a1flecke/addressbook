@@ -54,14 +54,12 @@ class CommentsController < ApplicationController
     end
   end
     
-  # PUT /comments/1
-  # PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      if @comment.update_attributes(params[:comment])
+      if @comment.update(params[:comment].permit(:family))
         format.html { redirect_to family_path(@family), notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else

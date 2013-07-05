@@ -62,7 +62,7 @@ class EmailsController < ApplicationController
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      if @email.update_attributes(params[:email])
+      if @email.update(params[:email].permit(:person))
         format.html { redirect_to family_path(@family), notice: 'Email was successfully updated.' }
         format.json { head :no_content }
       else

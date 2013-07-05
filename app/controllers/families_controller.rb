@@ -54,13 +54,11 @@ class FamiliesController < ApplicationController
     end
   end
 
-  # PUT /families/1
-  # PUT /families/1.json
   def update
     @family = get_family(params[:id])
 
     respond_to do |format|
-      if @family.update_attributes(params[:family])
+      if @family.update(params[:family].permit(:commets, :families, :addresses, :tags, :phoneNumbers, :people, :anniversary))
         format.html { redirect_to @family, notice: 'Family was successfully updated.' }
         format.json { head :no_content }
       else

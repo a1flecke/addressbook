@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.ui.datepicker
 //= require jquery_ujs
+//= require turbolinks
 //= require best_in_place
 //= require bootstrap-tooltip
 //= require bootstrap-popover
@@ -35,3 +36,5 @@ $("input.date_picker").datepicker({
     	             
     }
 });
+
+$( "input.date_picker" ).datepicker( "option", "dateFormat", "MM dd, yy" );

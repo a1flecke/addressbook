@@ -53,13 +53,11 @@ class AddressesController < ApplicationController
     end
   end
 
-  # PUT /addresses/1
-  # PUT /addresses/1.json
   def update
     @address = Address.find(params[:id])
     @family = Family.find(params[:family_id])
     respond_to do |format|
-      if @address.update_attributes(params[:address])
+      if @address.update(params[:address].permit(:name, :street, :city, :state, :zipCode, :family))
         format.html { redirect_to family_path(@family), notice: 'Address was successfully updated.' }
         format.json { head :no_content }
       else

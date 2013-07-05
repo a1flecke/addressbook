@@ -54,14 +54,12 @@ class PeopleController < ApplicationController
     end
   end
 
-  # PUT /people/1
-  # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      if @person.update_attributes(params[:person])
+      if @person.update(params[:person].permit(:family, :emails, :phoneNumbers, :tags))
         format.html { redirect_to family_path(@family), notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else

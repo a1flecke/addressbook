@@ -61,14 +61,12 @@ class PhoneNumbersController < ApplicationController
     end
   end
   
-  # PUT /phone_numbers/1
-  # PUT /phone_numbers/1.json
   def update
     @phone_number = PhoneNumber.find(params[:id])
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      if @phone_number.update_attributes(params[:phone_number])
+      if @phone_number.update(params[:phone_number].permit(:person, :family, :name, :value))
         format.html { redirect_to family_path(@family), notice: 'Phone number was successfully updated.' }
         format.json { head :no_content }
       else
