@@ -3,13 +3,11 @@
     	<td><%= render "inline_comments", {family: family, form: form} %></td>
         <td><%= render "inline_addresses", {family: family, form: form} %></td>
         <td><%= render "inline_tags", {family: family, form: form} %></td>
-        <td ><%= best_in_place family, :anniversary, type: :date, nil: "ADD" %></td>
+        <td ><%= best_in_place family, :anniversary, type: :date, nil: "ADD", display_as: :anniversary %></td>
         <td><%= render "inline_phone_numbers", {family: family, form: form} %></td>
-        <td><%= family.name %></td>
+        <td><%= best_in_place family, :name %></td>
         <td><%= family.created_at %></td>
         <td>
-        	<%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_family_path(family), :class => 'btn btn-mini' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         family_path(family),
                         :method => :delete,

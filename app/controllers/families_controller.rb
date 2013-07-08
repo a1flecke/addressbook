@@ -27,8 +27,13 @@ class FamiliesController < ApplicationController
     @family = FamilyDecorator.decorate(Family.new)
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.js
+      if @family.save
+        @families = FamilyDecorator.decorate_collection(Family.all)
+        format.html {render action: "index"}# new.html.erb
+        format.js
+      else
+        format.html {render action: "index"}
+      end
     end
   end
 
@@ -58,12 +63,12 @@ class FamiliesController < ApplicationController
     @family = get_family(params[:id])
 
     respond_to do |format|
-      if @family.update(params[:family].permit(:commets, :families, :addresses, :tags, :phoneNumbers, :people, :anniversary))
+      if @family.update(params[:family].permit(:commets, :families, :addresses, :tags, :phoneNumbers, :people, :anniversary, :name))
         format.html { redirect_to @family, notice: 'Family was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip(@family) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@family) }
       end
     end
   end

@@ -12,7 +12,7 @@ gem 'turbolinks'
 #Device/Feature Detection
 gem 'modernizr-rails'
 gem 'mobile-fu'
-
+gem "jquery-turbolinks"
 #Form/Validation
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select'
