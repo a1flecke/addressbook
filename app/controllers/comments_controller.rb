@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @family = Family.find(params[:family_id])
+    @comments = Comment.for_family(@family)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,8 +28,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @comment }
+      if @comment.save
+        format.html {render action: "index"}
+        format.js
+      else
+        format.html {render action: "index"}
+      end
+
     end
   end
 

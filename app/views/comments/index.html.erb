@@ -1,0 +1,16 @@
+<div class="page-header">
+	<h1><%= @family.name %>'s Comments</h1>
+</div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Comment</th>
+			<th><%=t '.actions', default: t("helpers.actions")%></th>
+		</tr>
+	</thead>
+	<tbody id="comments">
+		<% @comments.each do |comment| %>
+			<%= render "comment", {comment: comment} %>
+		<% end %>
+	</tbody>
+</table>
