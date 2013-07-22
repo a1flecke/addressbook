@@ -25,10 +25,12 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    @family = get_family(params[:family_id])
+    @comment = @family.comments.create()
 
     respond_to do |format|
       if @comment.save
+        @comments = Comment.for_family(@family)
         format.html {render action: "index"}
         format.js
       else

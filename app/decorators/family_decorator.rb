@@ -20,4 +20,11 @@ class FamilyDecorator < Draper::Decorator
 		return model.created_at.to_datetime.to_date.to_formatted_s(:long)
 	end
 
+	def comments
+		if model.comments.nil?
+			[]
+		else
+			model.comments
+		end
+	end
 end
