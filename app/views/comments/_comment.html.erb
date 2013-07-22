@@ -1,6 +1,9 @@
-<p>
-  <b>Comment:</b>
-  <%= comment.value %>
-</p>
+<tr>
+	<% family_comment = [@family, comment] %>
 
-<%= link_to 'Edit Comment', edit_family_comment_path(@family,comment) %> <%= link_to "Delete Comment", [@family, comment], :confirm=> 'Are you sure?', :method=> :delete%>
+	<%= simple_form_for(family_comment, html: {class: "form-horizontal"}) do |form| %>
+	<td><%= best_in_place family_comment, :value, nil: "Comment" %></td>
+	<td><%= link_to "Delete Comment", family_comment, confirm: 'Are you sure?', method: :delete %>
+	</td>
+	<% end %>
+</tr>

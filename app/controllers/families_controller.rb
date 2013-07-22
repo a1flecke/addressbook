@@ -29,10 +29,10 @@ class FamiliesController < ApplicationController
     respond_to do |format|
       if @family.save
         @families = FamilyDecorator.decorate_collection(Family.all)
-        format.html {render action: "index"}# new.html.erb
+        format.html {redirect_to action: "index"}# new.html.erb
         format.js
       else
-        format.html {render action: "index"}
+        format.html {redirect_to action: "index"}
       end
     end
   end

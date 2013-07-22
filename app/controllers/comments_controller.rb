@@ -31,10 +31,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comments = Comment.for_family(@family)
-        format.html {render action: "index"}
+        format.html {redirect_to action: "index"}
         format.js
       else
-        format.html {render action: "index"}
+        format.html {redirect_to action: "index"}
       end
 
     end
@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to family_path(@family), notice: 'Comment was successfully created.' }
         format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to action: "index" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -67,11 +67,11 @@ class CommentsController < ApplicationController
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      if @comment.update(params[:comment].permit(:family))
+      if @comment.update(params[:comment].permit(:family, :value))
         format.html { redirect_to family_path(@family), notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to action: "index" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
