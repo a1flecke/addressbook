@@ -20,6 +20,10 @@ class FamilyDecorator < Draper::Decorator
 		return model.created_at.to_datetime.to_date.to_formatted_s(:long)
 	end
 
+	def updated_at
+		return model.updated_at.to_datetime.to_date.to_formatted_s(:long)
+	end
+
 	def comments
 		if model.comments.nil?
 			[]

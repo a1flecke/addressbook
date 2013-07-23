@@ -6,7 +6,7 @@
         <td ><%= best_in_place family, :anniversary, type: :date, nil: "ADD", display_as: :anniversary %></td>
         <td><%= render "inline_phone_numbers", {family: family, form: form} %></td>
         <td><%= best_in_place family, :name %></td>
-        <td><%= family.created_at %></td>
+        <td><%= family.updated_at %></td>
         <td>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         family_path(family),

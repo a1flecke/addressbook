@@ -6,3 +6,4 @@ en:
     attributes:
       family:
         phoneNumbers_id: Phone Numbers
+        updated_at: Last Updated

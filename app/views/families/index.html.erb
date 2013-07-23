@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:anniversary) %></th>
       <th><%= model_class.human_attribute_name(:phoneNumbers_id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -31,6 +31,6 @@
 <%- end -%>
 
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => "New Family"),
             new_family_path,
             :class => 'btn btn-primary new-family', id: "new-family"%>

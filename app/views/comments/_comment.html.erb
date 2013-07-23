@@ -3,7 +3,10 @@
 
 	<%= simple_form_for(family_comment, html: {class: "form-horizontal"}) do |form| %>
 	<td><%= best_in_place family_comment, :value, nil: "Comment" %></td>
-	<td><%= link_to "Delete Comment", family_comment, confirm: 'Are you sure?', method: :delete %>
-	</td>
+	<td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        family_comment,
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %></td>
 	<% end %>
 </tr>
