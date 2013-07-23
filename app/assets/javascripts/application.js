@@ -11,10 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery.ui.datepicker
 //= require jquery_ujs
-//= require turbolinks
 //= require best_in_place
 //= require bootstrap-tooltip
 //= require bootstrap-popover

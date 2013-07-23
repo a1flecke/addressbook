@@ -86,7 +86,7 @@ class CommentsController < ApplicationController
     @family = Family.find(params[:family_id])
 
     respond_to do |format|
-      format.html {  redirect_to family_path(@family) }
+      format.html {  redirect_to action: "index" }
       format.json { head :no_content }
     end
   end

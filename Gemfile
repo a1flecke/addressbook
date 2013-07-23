@@ -6,13 +6,10 @@ gem 'rails', '>=4.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 #UI
 #Device/Feature Detection
 gem 'modernizr-rails'
 gem 'mobile-fu'
-gem "jquery-turbolinks"
 #Form/Validation
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'country_select'
