@@ -1,34 +1,26 @@
 <%- model_class = Family -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= best_in_place @family, :name %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:comments_id) %>:</strong></dt>
-  <dd><%= @family.comments_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:families_id) %>:</strong></dt>
-  <dd><%= @family.families_id %></dd>
+  <dd><%= render "comment_list", {family: @family, comments: @family.comments} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:addresses_id) %>:</strong></dt>
-  <dd><%= @family.addresses_id %></dd>
+  <dd><%= render "address_list", {family: @family, addresses: @family.addresses} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tags_id) %>:</strong></dt>
-  <dd><%= @family.tags_id %></dd>
+  <dd><%= render "tag_list", {family: @family, tags: @family.tags} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:anniversary) %>:</strong></dt>
-  <dd>MY ANNIVERSARY</dd>
+  <dd><%= render "anniversary", {family: @family} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phoneNumbers_id) %>:</strong></dt>
-  <dd><%= @family.phoneNumbers_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:date_deleted) %>:</strong></dt>
-  <dd><%= @family.date_deleted %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:is_deleted) %>:</strong></dt>
-  <dd><%= @family.is_deleted %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @family.name %></dd>
+  <dd><%= render "phone_number_list", {family: @family, phoner_numbers: @family.phone_numbers} %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
+  <dd><%= @family.updated_at %></dd>
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               families_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_family_path(@family), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               family_path(@family),
               :method => 'delete',
