@@ -1,1 +1,9 @@
-NOT FINISHED
+<% if comments.empty? %>
+No Comments
+<% else %>
+<ul class="list-group">
+	<% comments.each do |comment| %>
+		<li class="list-group-item"><%= comment.value %></li>
+	<% end %>
+</ul>
+<% end %>

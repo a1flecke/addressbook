@@ -28,7 +28,11 @@ class FamilyDecorator < Draper::Decorator
 		if model.comments.nil?
 			[]
 		else
-			model.comments
+			comments = []
+			model.comments.each do |comment|
+				comments << comment unless comment.value.nil?
+			end
+			comments
 		end
 	end
 end
