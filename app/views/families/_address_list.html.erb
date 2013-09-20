@@ -1,1 +1,9 @@
-NOT FINISHED
+<% if addresses.empty? %>
+None
+<% else %>
+<ul class="list-group">
+  <% addresses.each do |address| %>
+    <li class="list-group-item"><%= address.inline %></li>
+  <% end %>
+</ul>
+<% end %>

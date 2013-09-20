@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.all
+    @addresses = AddressDecorator.decorate_collection(Address.all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
   # GET /addresses/1
   # GET /addresses/1.json
   def show
-    @address = Address.find(params[:id])
+    @address = get_address(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
   # GET /addresses/new
   # GET /addresses/new.json
   def new
-    @address = Address.new
+    @address = AddressDecorator.decorate(Address.new)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,14 +34,14 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
-    @address = Address.find(params[:id])
+    @address = get_address(params[:id])
   end
 
   # POST /addresses
   # POST /addresses.json
   def create
     @family = Family.find(params[:family_id])
-    @address = @family.addresses.create(params[:address])
+    @address = AddressDecorator.decorate(@family.addresses.create(params[:address].permit(:name, :street, :city, :state, :zipCode, :family)))
     respond_to do |format|
       if @address.save
         format.html {redirect_to family_path(@family), notice: 'Address was successfully created.'}
@@ -54,7 +54,7 @@ class AddressesController < ApplicationController
   end
 
   def update
-    @address = Address.find(params[:id])
+    @address = get_address(params[:id])
     @family = Family.find(params[:family_id])
     respond_to do |format|
       if @address.update(params[:address].permit(:name, :street, :city, :state, :zipCode, :family))

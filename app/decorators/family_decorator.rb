@@ -12,6 +12,10 @@ class FamilyDecorator < Draper::Decorator
 		end
 	end
 
+	def addresses
+		AddressDecorator.decorate_collection(model.addresses)
+	end
+
 	def phone_numbers
 		return model.phoneNumbers
 	end

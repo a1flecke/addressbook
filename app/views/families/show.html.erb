@@ -5,15 +5,15 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:comments_id) %>:</strong></dt>
-  <dd><%= render "comment_list", {family: @family, comments: @family.comments} %></dd>
+  <dd><%= render "partials/collection_list", {collection: @family.comments} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:addresses_id) %>:</strong></dt>
   <dd><%= render "address_list", {family: @family, addresses: @family.addresses} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tags_id) %>:</strong></dt>
-  <dd><%= render "tag_list", {family: @family, tags: @family.tags} %></dd>
+  <dd><%= render "partials/collection_list", {collection: @family.tags} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:anniversary) %>:</strong></dt>
   <dd><%= render "anniversary", {family: @family} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phoneNumbers_id) %>:</strong></dt>
-  <dd><%= render "phone_number_list", {family: @family, phoner_numbers: @family.phone_numbers} %></dd>
+  <dd><%= render "partials/collection_list", {collection: @family.phone_numbers} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
   <dd><%= @family.updated_at %></dd>
 </dl>
