@@ -25,6 +25,9 @@ class TagsController < ApplicationController
   # GET /tags/new.json
   def new
     @tag = Tag.new
+    @family = get_family(params[:family_id])
+
+    raise "Family does not exist" if @family.nil?
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,14 +43,19 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(params[:tag])
+    family = get_family(params[:tag][:family])
+    raise "Family not found" if family.nil?
+
+    params[:tag][:family] = family
+
+    @tag = Tag.new(params[:tag].permit(:value, :family))
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render json: @tag, status: :created, location: @tag }
+        format.html { redirect_to family_path(@family), notice: 'Tag was successfully created.' }
+        format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end

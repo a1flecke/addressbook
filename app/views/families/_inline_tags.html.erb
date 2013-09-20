@@ -1,5 +1,5 @@
 <% if family.tags.empty? %>
-	<%= link_to "Add Tag", new_tag_path(family), :class => 'btn btn-mini btn-info' %>
+	<%= link_to "Add Tag", new_tag_path({family_id: family}), :class => 'btn btn-mini btn-info' %>
 <% else %>
 	<%= link_to "Tags", tag_path(family) %>
 <% end %>

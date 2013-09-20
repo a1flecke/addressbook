@@ -8,8 +8,6 @@
   <dd><%= render "partials/collection_list", {collection: @family.comments} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:addresses_id) %>:</strong></dt>
   <dd><%= render "address_list", {family: @family, addresses: @family.addresses} %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tags_id) %>:</strong></dt>
-  <dd><%= render "partials/collection_list", {collection: @family.tags} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:anniversary) %>:</strong></dt>
   <dd><%= render "anniversary", {family: @family} %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phoneNumbers_id) %>:</strong></dt>

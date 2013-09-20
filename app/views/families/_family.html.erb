@@ -2,7 +2,6 @@
     <%= simple_form_for(family, :html => {:class => 'form-horizontal' }) do |form|%>
     	<td><%= render "inline_comments", {family: family, form: form} %></td>
         <td><%= render "inline_addresses", {family: family, form: form} %></td>
-        <td><%= render "inline_tags", {family: family, form: form} %></td>
         <td><%= render "anniversary", {family: family} %></td>
         <td><%= render "inline_phone_numbers", {family: family, form: form} %></td>
         <td><%= best_in_place family, :name %></td>

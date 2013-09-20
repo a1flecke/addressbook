@@ -9,3 +9,5 @@ en:
         updated_at: Last Updated
       comment:
         value:  Comment
+      tag:
+        value: Tag

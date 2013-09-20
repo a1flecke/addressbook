@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
     @comment = Comment.new
-
+    debugger
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
