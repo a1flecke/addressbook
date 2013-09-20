@@ -25,19 +25,20 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @family = get_family(params[:family_id])
-    @comment = @family.comments.create()
+    @comment = Comment.new
 
     respond_to do |format|
-      if @comment.save
-        @comments = Comment.for_family(@family)
-        format.html {redirect_to action: "index"}
-        format.js
-      else
-        format.html {redirect_to action: "index"}
-      end
-
+      format.html # new.html.erb
+      format.json { render json: @comment }
     end
+    # respond_to do |format|
+    #   if @comment.save
+    #     @comments = Comment.for_family(@family)
+    #     format.html {redirect_to action: "index"}
+    #     format.js
+    #   else
+    #     format.html {redirect_to action: "index"}
+    #   end
   end
 
   # GET /comments/1/edit
@@ -49,7 +50,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @family = Family.find(params[:family_id])
-    @comment = @family.comments.create(params[:comment])
+    @comment = @family.comments.create(params[:comment].permit(:family, :value))
 
      respond_to do |format|
       if @comment.save

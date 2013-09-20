@@ -7,3 +7,5 @@ en:
       family:
         phoneNumbers_id: Phone Numbers
         updated_at: Last Updated
+      comment:
+        value:  Comment
