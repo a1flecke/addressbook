@@ -11,3 +11,9 @@ en:
         value:  Comment
       tag:
         value: Tag
+      person:
+        phoneNumbers_id: Phone Numbers
+        firstName: First Name
+        lastName: Last Name
+        nickName: Nick Name
+        updated_at: Last Updated
