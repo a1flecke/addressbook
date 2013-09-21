@@ -55,7 +55,7 @@ gem "bootstrap-sass"
 gem "bootstrap-helpers"
 
 gem 'sass-rails'
-gem 'compass-rails'
+gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'font-awesome-sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
