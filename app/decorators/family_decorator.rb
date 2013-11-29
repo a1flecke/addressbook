@@ -6,7 +6,7 @@ class FamilyDecorator < Draper::Decorator
 
 	def anniversary
 		if anniversary?
-			return Date.parse(model.anniversary).to_formatted_s(:long)
+			return Date.strptime(model.anniversary, "%m/%d/%Y").to_formatted_s(:long)
 		else
 			return nil
 		end

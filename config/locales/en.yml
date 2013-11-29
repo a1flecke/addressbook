@@ -17,3 +17,8 @@ en:
         lastName: Last Name
         nickName: Nick Name
         updated_at: Last Updated
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
