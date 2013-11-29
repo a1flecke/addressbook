@@ -14,19 +14,18 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require best_in_place
-//= require bootstrap-tooltip
-//= require bootstrap-popover
-//= require bootstrap-transition
-//= require bootstrap-affix
-//= require bootstrap-alert
-//= require bootstrap-button
-//= require bootstrap-carousel
-//= require bootstrap-collapse
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-scrollspy
-//= require bootstrap-tab
-//= require bootstrap-typeahead
+//= require bootstrap/tooltip
+//= require bootstrap/popover
+//= require bootstrap/transition
+//= require bootstrap/affix
+//= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/carousel
+//= require bootstrap/collapse
+//= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/scrollspy
+//= require bootstrap/tab
 //= require_tree .
 
 
