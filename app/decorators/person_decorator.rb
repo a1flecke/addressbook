@@ -6,7 +6,7 @@ class PersonDecorator < Draper::Decorator
 
   def birthday
     if birthday?
-      return Date.parse(model.birthday).to_formatted_s(:long)
+      return model.birthday.to_date.to_formatted_s
     else
       return nil
     end
@@ -40,11 +40,7 @@ class PersonDecorator < Draper::Decorator
     end
   end
 
-  def created_at
-    return model.created_at.to_datetime.to_date.to_formatted_s(:long)
-  end
-
   def updated_at
-    return model.updated_at.to_datetime.to_date.to_formatted_s(:long)
+    return model.updated_at.to_datetime.to_date.to_formatted_s
   end
 end

@@ -1,1 +1,5 @@
-NOT FINISHED
+<% if person.emails.empty? %>
+  <%= link_to "Add Email", new_person_email_path(person), :class => 'btn btn-mini btn-info' %>
+<% else %>
+  <%= link_to "Emails", person_email_path(person) %>
+<% end %>

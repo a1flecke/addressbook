@@ -47,6 +47,7 @@ class PeopleController < ApplicationController
     @family = get_family(params[:person][:family_id]) if params[:person][:family_id]
 
     params[:person][:family_id] = @family.nil? ? nil : @family.id 
+    debugger
 
     respond_to do |format|
       if       successful = @person.update(params[:person].permit(:family_id, :emails, :phoneNumbers, :tags, :firstName, :lastName, :nickname, :birthday))
