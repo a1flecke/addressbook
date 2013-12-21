@@ -1,11 +1,11 @@
  <tr>
     <%= simple_form_for(family, :html => {:class => 'form-horizontal' }) do |form|%>
-        <td><%= best_in_place family, :name %></td>
+        <td><%= best_in_place family, :name, nil: "Click to enter name" %></td>
         <td><%= render "inline_addresses", {family: family, form: form} %></td>
         <td><%= render "inline_phone_numbers", {family: family, form: form} %></td>
-        <td><%= family.updated_at %></td>
         <td><%= render "anniversary", {family: family} %></td>
         <td><%= render "inline_comments", {family: family, form: form} %></td>
+        <td><%= family.updated_at %></td>
         <td>
             <%= link_to "Full View", family_path(family), class: "btn btn-mini btn-info" %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

@@ -27,6 +27,8 @@ gem 'tabulous'
 #ics support
 gem 'icalendar'
 
+gem 'american_date'
+
 #gem 'rb-inotify'
 
 group :development, :test do

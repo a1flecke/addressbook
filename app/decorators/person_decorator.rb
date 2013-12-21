@@ -1,12 +1,14 @@
 require 'date'
+require 'date_decorator'
 
 class PersonDecorator < Draper::Decorator
+  include DateDecorator
   delegate_all
   decorates :person
 
   def birthday
     if birthday?
-      return model.birthday.to_date.to_formatted_s
+      return decorate_date(model.birthday)
     else
       return nil
     end
@@ -41,6 +43,6 @@ class PersonDecorator < Draper::Decorator
   end
 
   def updated_at
-    return model.updated_at.to_datetime.to_date.to_formatted_s
+    return decorate_date(model.updated_at)
   end
 end

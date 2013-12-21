@@ -1,10 +1,11 @@
 <div class="page-header">
-  <h1><%= @parent.name %>'s Phone Number</h1>
+  <h1><%= @parent.name.capitalize %>'s Phone Number</h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Comment</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:value) %></th>
       <th><%=t '.actions', default: t("helpers.actions")%></th>
     </tr>
   </thead>

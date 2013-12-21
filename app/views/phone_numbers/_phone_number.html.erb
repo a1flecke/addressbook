@@ -1,18 +1,27 @@
-NEED EDIT AND DELETE PATH
-<p>
-  <b>Phone Number</b>
-  <%= phone_number.name %>
-</p>
+ <tr>
+    <%= simple_form_for([@parent, phone_number], :html => {:class => 'form-horizontal' }) do |form|%>
+        <td><%= best_in_place [@parent, phone_number], :name %></td>
+        <td><%= best_in_place [@parent, phone_number], :value %></td>
+        <td>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        [@parent, phone_number],
+                        method: :delete,
+                        data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+                        class: 'btn btn-mini btn-danger' %>
+        </td>
+    <% end %>
+</tr>
 
-<p>
-  <b>Number:</b>
-  <%= phone_number.value %>
-</p>
 
+
+<!---
+<p>
+  <b><%= phone_number.name %>: </b><%= phone_number.value %>
 <%if phone_number.person_id.nil?%>
-<%= link_to 'Edit Phone Number', edit_family_phone_number_path(@family,phone_number) %> <%= link_to "Delete Phone Number", [@family, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
+  <%= link_to 'Edit', edit_family_phone_number_path(@parent,phone_number) %>   <%= link_to "Delete", [@parent, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
 <%else params.has_key?(:id)%>
-<% person = Person.find(phone_number.person_id)%>
-<%= link_to 'Edit Phone Number', edit_family_person_phone_number_path(@family,person,phone_number) %> <%= link_to "Delete Phone Number", [@family, person, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
+  <% person = Person.find(phone_number.person_id)%>
+  <%= link_to 'Edit', edit_person_phone_number_path(person,phone_number) %> <%= link_to "Delete", [@parent, phone_number], :confirm=> 'Are you sure?', :method=> :delete%>
 <%end%>
-
+</p>
+--->
