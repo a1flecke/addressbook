@@ -1,0 +1,23 @@
+<%- model_class = Person -%>
+<div class="page-header">
+  <h1><%= best_in_place @person, :name %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:firstName) %>:</strong></dt>
+  <dd><%= @person.firstName %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:lastName) %>:</strong></dt>
+  <dd><%= @person.lastName %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nickname) %>:</strong></dt>
+  <dd><%= @person.nickname %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:birthday) %>:</strong></dt>
+  <dd><%= @person.birthday %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:family_id) %>:</strong></dt>
+  <dd><%= render "family", {family: @family}%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:emails_id) %>:</strong></dt>
+  <dd><%= render "partials/collection_list", {collection: @person.emails} %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:phoneNumbers_id) %>:</strong></dt>
+  <dd><%= render "partials/collection_list", {collection: @person.phone_numbers} %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:updated_at) %>:</strong></dt>
+  <dd><%= @person.updated_at %></dd>
+</dl>

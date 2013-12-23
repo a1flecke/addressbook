@@ -1,0 +1,5 @@
+<% if family.nil? %>
+  No Family
+<% else %>
+  <%= link_to family.name, family_path(fmaily), :class => 'btn btn-mini btn-info' %>
+<% end %>
