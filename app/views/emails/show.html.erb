@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @email.value %>
+</p>
+
+
+<%= link_to 'Update', edit_person_email_path(@person,@comment) %> |
+<%= link_to 'Back', email_path %>

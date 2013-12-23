@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1><%= @person.name.capitalize %>'s Emails</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th><%=t '.actions', default: t("helpers.actions")%></th>
+    </tr>
+  </thead>
+  <tbody id="emails">
+    <% @emails.each do |email| %>
+      <%= render "email", {email: email} %>
+    <% end %>
+  </tbody>
+</table>
+
+<%- flash.each do |key, msg| -%>
+  <div id="<%= key %>">
+    <p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+    <p><%= msg %></p>
+    <div class="clear"></div>
+  </div>
+<%- end -%>
+
+
+<%= link_to t('.new', :default => "New Email"),
+            new_person_email_path,
+            :class => 'btn btn-primary new-person-email', id: "new-person-email"%>

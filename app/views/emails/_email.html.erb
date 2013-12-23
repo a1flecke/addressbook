@@ -1,7 +1,12 @@
+<tr>
+  <% person_email = [@person, email] %>
 
-<p>
-  <b>Email:</b>
-  <%= email.value %>
-</p>
-<% person = Person.find(email.person_id)%>
-<%= link_to 'Edit Email', edit_family_person_email_path(@family, person, email) %> <%= link_to "Delete Email", [@family, person,email], :confirm=> 'Are you sure?', :method=> :delete%>
+  <%= simple_form_for(person_email, html: {class: "form-horizontal"}) do |form| %>
+  <td><%= best_in_place person_email, :value, nil: "Email" %></td>
+  <td><%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        person_email,
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %></td>
+  <% end %>
+</tr>
