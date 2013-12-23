@@ -2,7 +2,15 @@ class PhoneNumbersController < ApplicationController
   # GET /phone_numbers
   # GET /phone_numbers.json
   def index
-    @phone_numbers = PhoneNumber.all
+    if params.has_key?(:family_id)
+      @parent = get_family(params[:family_id])
+      @phone_numbers = PhoneNumber.for_family(@parent)
+      @new_path = new_family_phone_number_path(@parent)
+    else
+      @parent = get_person(params[:person_id])
+      @phone_numbers = PhoneNumber.for_person(@parent)
+      @new_path = new_family_phone_number_path(@parent)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,23 +48,23 @@ class PhoneNumbersController < ApplicationController
   # POST /phone_numbers
   # POST /phone_numbers.json
   def create
-    @family = Family.find(params[:family_id])
-    
     if params.has_key?(:person_id)
-      @person = Person.find(params[:person_id])
-      @phone_number = @person.phoneNumbers.create(params[:phone_number])
+      person = Person.find(params[:person_id])
+      phone_number = person.phoneNumbers.create(params[:phone_number].permit(:name, :value))
+      path = person_path(person)
     else
-      @phone_number = @family.phoneNumbers.create(params[:phone_number])
+      family = Family.find(params[:family_id])
+      phone_number = family.phoneNumbers.create(params[:phone_number].permit(:name, :value))
+      path = family_path(family)
     end
     
-    
     respond_to do |format|
-      if @phone_number.save
-        format.html { redirect_to family_path(@family), notice: 'Phone number was successfully created.' }
+      if phone_number.save
+        format.html { redirect_to path, notice: 'Phone number was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render action: "new" }
-        format.json { render json: @phone_number.errors, status: :unprocessable_entity }
+        format.json { render json: phone_number.errors, status: :unprocessable_entity }
       end
     end
   end

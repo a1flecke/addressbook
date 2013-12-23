@@ -1,27 +1,21 @@
-<p>
-  <b>Name:</b>
-  <%= person.firstName %> <%= person.middleName+' ' unless person.middleName.empty?%><%= person.lastName%>
-</p>
-<p>
-	<b>Birthday:</b>
-	<%= person.birthday%>
-</p>
-<p>
-	<b>Nick Name:</b>
-	<%= person.nickname%>
-</p>
-
-<p>
-  <b>Phone number (person):</b>
-  <%= render person.phoneNumbers %>
-  <%= link_to 'Add a Phone Number', new_family_person_phone_number_path(@family,person) %>
-</p>
-
-
-<p>
-  <b>Email:</b>
-  <%= render person.emails %>
-  <%= link_to 'Add an Email', new_family_person_email_path(@family,person) %>
-</p>
-
-<%= link_to 'Edit Person', edit_family_person_path(@family,person) %> <%= link_to "Delete Person", [@family, person], :confirm=> 'Are you sure?', :method=> :delete%>
+ <% @family_id_mapping = Family.id_mapping %>
+ <tr>
+    <%= simple_form_for(person, :html => {:class => 'form-horizontal' }) do |form|%>
+      <td><%= render "inline_family", {person: person, family_mapping: @family_id_mapping} %></td>
+        <td><%= render "inline_emails", {person: person, form: form} %></td>
+        <td><%= render "inline_phone_numbers", {person: person, form: form} %></td>
+        <td><%= best_in_place person, :firstName %></td>
+        <td><%= best_in_place person, :lastName %></td>
+        <td><%= best_in_place person, :nickname %></td>
+        <td><%= render "birthday", {person: person} %></td>
+        <td><%= person.updated_at %></td>
+        <td>
+            <%= link_to "Full View", person_path(person), class: "btn btn-mini btn-info" %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        person_path(person),
+                        method: :delete,
+                        data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+                        class: 'btn btn-mini btn-danger' %>
+        </td>
+    <% end %>
+</tr>

@@ -1,12 +1,14 @@
 require 'date'
+require 'date_decorator'
 
 class FamilyDecorator < Draper::Decorator
+	include DateDecorator
   delegate_all
   decorates :family
 
 	def anniversary
 		if anniversary?
-			return Date.parse(model.anniversary).to_formatted_s(:long)
+			return decorate_date(model.anniversary)
 		else
 			return nil
 		end
@@ -20,12 +22,8 @@ class FamilyDecorator < Draper::Decorator
 		return model.phoneNumbers
 	end
 
-	def created_at
-		return model.created_at.to_datetime.to_date.to_formatted_s(:long)
-	end
-
 	def updated_at
-		return model.updated_at.to_datetime.to_date.to_formatted_s(:long)
+		return decorate_date(model.updated_at)
 	end
 
 	def comments

@@ -1,0 +1,5 @@
+<% if family_mapping.empty? %>
+  <%= link_to "No Families", families_path, :class => 'btn btn-mini btn-info' %>
+<% else %>
+  <%= best_in_place person, :family_id, type: :select, collection: family_mapping, nil: "NONE" %>
+<% end %>

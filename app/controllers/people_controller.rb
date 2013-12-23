@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = PersonDecorator.decorate_collection(Person.all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    @person = Person.find(params[:id])
+    @person = get_person(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,43 +24,33 @@ class PeopleController < ApplicationController
   # GET /people/new
   # GET /people/new.json
   def new
-    @person = Person.new
+    @person = PersonDecorator.decorate(Person.new)
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @person }
+      if @person.save
+        @people = PersonDecorator.decorate_collection(Person.all)
+        format.html {redirect_to action: "index"}# new.html.erb
+        format.js
+      else
+        format.html {redirect_to action: "index"}
+      end
     end
   end
 
   # GET /people/1/edit
   def edit
-    @person = Person.find(params[:id])
-  end
-
-  # POST /people
-  # POST /people.json
-  def create
-    @family = Family.find(params[:family_id])
-    @person = @family.people.create(params[:person])
-    
-    respond_to do |format|
-      if @person.save
-        format.html { redirect_to family_path(@family), notice: 'Person was successfully created.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
-    end
+    @person = get_person(params[:id])
   end
 
   def update
-    @person = Person.find(params[:id])
-    @family = Family.find(params[:family_id])
+    @person = get_person(params[:id])
+    @family = get_family(params[:person][:family_id]) if params[:person][:family_id]
+
+    params[:person][:family_id] = @family.nil? ? nil : @family.id 
 
     respond_to do |format|
-      if @person.update(params[:person].permit(:family, :emails, :phoneNumbers, :tags))
-        format.html { redirect_to family_path(@family), notice: 'Person was successfully updated.' }
+      if       successful = @person.update(params[:person].permit(:family_id, :emails, :phoneNumbers, :tags, :firstName, :lastName, :nickname, :birthday))
+        format.html { redirect_to person_path(@person), notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,10 +65,8 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.destroy
 
-    @family = Family.find(params[:family_id])
-
     respond_to do |format|
-      format.html { redirect_to family_path(@family)}
+      format.html { redirect_to person_path(@person)}
       format.json { head :no_content }
     end
   end

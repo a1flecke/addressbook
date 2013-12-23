@@ -1,0 +1,5 @@
+<% if person.phone_numbers.empty? %>
+  <%= link_to "Add Phone Number", new_person_phone_number_path(person), :class => 'btn btn-mini btn-info' %>
+<% else %>
+  <%= link_to "Phone Numbers", person_phone_numbers_path(person) %>
+<% end %>
