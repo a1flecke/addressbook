@@ -1,17 +1,16 @@
  <tr>
-    <%= simple_form_for(address, :html => {:class => 'form-horizontal' }) do |form|%>
+    <% family_address = [@family, address] %>
+    <%= simple_form_for(family_address, :html => {:class => 'form-horizontal' }) do |form|%>
         <td><%= address.id %></td>
-        <td><%= best_in_place address, :name, nil: "Click to enter name" %></td>
-        <td><%= best_in_place address, :street, nil: "Click to enter street" %></td>
-        <td><%= best_in_place address, :city, nil: "Click to enter city" %></td>
-        <td><%= best_in_place address, :state, type: :select, collection: state_mapping, nil: "Click to enter state" %></td>
-        <td><%= render "anniversary", {family: family} %></td>
-        <td><%= render "inline_comments", {family: family, form: form} %></td>
-        <td><%= family.updated_at %></td>
+        <td><%= best_in_place family_address, :name, nil: "Click to enter name" %></td>
+        <td><%= best_in_place family_address, :street, nil: "Click to enter street" %></td>
+        <td><%= best_in_place family_address, :city, nil: "Click to enter city" %></td>
+        <td><%= best_in_place family_address, :state, type: :select, collection: state_mapping, nil: "Click to enter state" %></td>
+        <td><%= best_in_place family_address, :zipCode, nil: "Click to enter zip code" %></td>
+        <td><%= address.updated_at %></td>
         <td>
-            <%= link_to "Full View", family_path(family), class: "btn btn-mini btn-info" %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        family_path(family),
+                        family_address_path(@family, address),
                         method: :delete,
                         data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
                         class: 'btn btn-mini btn-danger' %>

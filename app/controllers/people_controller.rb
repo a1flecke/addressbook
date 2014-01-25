@@ -45,11 +45,10 @@ class PeopleController < ApplicationController
   def update
     @person = get_person(params[:id])
     @family = get_family(params[:person][:family_id]) if params[:person][:family_id]
-
-    params[:person][:family_id] = @family.nil? ? nil : @family.id 
+    params[:person][:family] = @family unless @family.nil?
 
     respond_to do |format|
-      if       successful = @person.update(params[:person].permit(:family_id, :emails, :phoneNumbers, :tags, :firstName, :lastName, :nickname, :birthday))
+      if successful = @person.update(params[:person].permit(:emails, :family, :family_id, :phoneNumbers, :tags, :firstName, :lastName, :nickname, :birthday))
         format.html { redirect_to person_path(@person), notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
