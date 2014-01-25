@@ -1,26 +1,20 @@
-<p>
-  <b>Address Name:</b>
-  <%= address.name %>
-</p>
-
-
-<p>
-  <b>Street:</b>
-  <%= address.street %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= address.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= address.state %>
-</p>
-
-<p>
-  <b>Zipcode:</b>
-  <%= address.zipCode %>
-</p>
-<%= link_to 'Edit Address', edit_family_address_path(@family,address) %> <%= link_to "Delete Address", [@family, address], :confirm=> 'Are you sure?', :method=> :delete%>
+ <tr>
+    <%= simple_form_for(address, :html => {:class => 'form-horizontal' }) do |form|%>
+        <td><%= address.id %></td>
+        <td><%= best_in_place address, :name, nil: "Click to enter name" %></td>
+        <td><%= best_in_place address, :street, nil: "Click to enter street" %></td>
+        <td><%= best_in_place address, :city, nil: "Click to enter city" %></td>
+        <td><%= best_in_place address, :state, type: :select, collection: state_mapping, nil: "Click to enter state" %></td>
+        <td><%= render "anniversary", {family: family} %></td>
+        <td><%= render "inline_comments", {family: family, form: form} %></td>
+        <td><%= family.updated_at %></td>
+        <td>
+            <%= link_to "Full View", family_path(family), class: "btn btn-mini btn-info" %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        family_path(family),
+                        method: :delete,
+                        data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+                        class: 'btn btn-mini btn-danger' %>
+        </td>
+    <% end %>
+</tr>

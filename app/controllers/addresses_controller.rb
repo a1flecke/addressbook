@@ -2,7 +2,8 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = AddressDecorator.decorate_collection(Address.all)
+    @family = get_family(params[:family_id])
+    @addresses = AddressDecorator.decorate_collection(Address.for_family(@family))
 
     respond_to do |format|
       format.html # index.html.erb
