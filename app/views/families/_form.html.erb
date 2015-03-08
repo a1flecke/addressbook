@@ -1,8 +1,0 @@
-<%= simple_form_for @family, html: { class: 'form-horizontal', method: :patch } do |f| %>
-  <%= f.input :name %>
-  <div class="form-actions"> <!---http://www.arailsdemo.com/posts/31 --->
-    <%= f.button :submit, :class => 'btn-primary', remote: true, :input_html => {"data-remote" => true} %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                families_path, :class => 'btn' %>
-  </div>
-<% end %>

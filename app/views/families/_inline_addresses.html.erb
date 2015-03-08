@@ -1,5 +1,0 @@
-<% if family.addresses.empty? %>
-	<%= link_to "Add Address", new_family_address_path(family), :class => 'btn btn-mini btn-info' %>
-<% else %>
-	<%= link_to "Addresses", family_addresses_path(family) %>
-<% end %>

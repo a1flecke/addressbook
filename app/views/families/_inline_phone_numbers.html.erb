@@ -1,5 +1,0 @@
-<% if family.phone_numbers.empty? %>
-	<%= link_to "Add Phone Number", new_family_phone_number_path(family), :class => 'btn btn-mini btn-info' %>
-<% else %>
-	<%= link_to "Phone Numbers", family_phone_numbers_path(family) %>
-<% end %>
